@@ -7,7 +7,8 @@ import { useParams } from 'react-router';
      const [password, setPassword] = useState('')
      const params = useParams();
      const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT/users/register'
-     console.log(baseURL)
+    //  console.log(baseURL)
+     console.log('params.method: ', params.method)
     return <> 
     <p>Login/Register</p>
     <form onSubmit={async (event) => {

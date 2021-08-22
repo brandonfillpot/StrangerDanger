@@ -13,12 +13,13 @@ const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT'
         }
         fetchPosts()
     }, [])
+    console.log('posts: ', posts)
   return <>
     <h1>
     Posts
     </h1> 
     {
-        posts.map(post => <div key={post.id}>
+        posts.map(post => <div key={post._id}>
          {post.title}
         </div>)
     }
