@@ -15,14 +15,19 @@ const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT'
     }, [])
     console.log('posts: ', posts)
   return <>
-    <h1>
+    <h1 className='title'>
     Posts
     </h1> 
+    <div className='content'>
     {
-        posts.map(post => <div key={post._id}>
+        posts.map(post => <><h3 key={post._id}>
          {post.title}
-        </div>)
+        </h3>
+        <div>
+         {post.description}
+        </div></>)
     }
+    </div>
     </>
  }
 export default Posts;

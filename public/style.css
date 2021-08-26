@@ -1,0 +1,21 @@
+.header {
+    background-color: slategray;
+    margin: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    color: navy;
+    text-align: center;
+}
+.title {
+    background-color: olivedrab;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    color: papayawhip;
+    text-align: center;
+}
+.content {
+    margin: 10px;
+    background-color: gray;
+    justify-content: center;
+    padding-left: 30px;
+}
