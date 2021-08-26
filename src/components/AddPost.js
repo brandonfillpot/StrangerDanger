@@ -3,20 +3,23 @@ import { callApi } from './util';
 
 
  const AddPost = ({token}) => {
-     const [item, setItem] = useState('')
+     const [title, setTitle] = useState('')
      const [description, setDescription] = useState('')
+     const [price, setPrice] = useState('')
 
      const handleAdd = async (ev) => {
         ev.preventDefault();
-        console.log({item, description})
+        console.log({title, description, price})
         const addPostResp = await callApi({
             url: '/posts', 
             method: 'POST', 
             token, 
             body:{
                 post:{
-                    item, 
-                    description}
+                    title, 
+                    description,
+                    price
+                }
                 }})
         console.log('addPostResp:', addPostResp)
         console.log(token)
@@ -25,8 +28,9 @@ import { callApi } from './util';
     return <>
     <div>Add Post</div>
     <form onSubmit={handleAdd}>
-        <input type='text' placeholder='Item Name' value={item} onChange= {(event) => setItem(event.target.value)}></input>
+        <input type='text' placeholder='Item Name' value={title} onChange= {(event) => setTitle(event.target.value)}></input>
         <input type='text' placeholder='Item Description' value={description} onChange= {(event) => setDescription(event.target.value)}></input>
+        <input type='text' placeholder='Item Price' value={price} onChange= {(event) => setPrice(event.target.value)}></input>
         <button type='submit'>Add Post</button>
     </form>
     </>
