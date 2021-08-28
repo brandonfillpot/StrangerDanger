@@ -16,8 +16,26 @@ import {
 const App = () => {
   const [token, setToken] = useState('')
   const [user, setUser] = useState('')
+  const [posts, setPosts] = useState([])
   console.log('token: ', token)
   console.log('user: ', user)
+  useEffect(() => {
+    try{
+      const fetchPosts = async () => {
+          const resp = await fetch(`${baseURL}/posts`);
+          const data = await resp.json();
+          console.log('fetchLog:', data)
+          setPosts(data.data.posts) 
+      }
+      fetchPosts();
+    }
+      
+      catch (error) {
+          console.error(error);
+        }
+  }, [token])
+        
+      console.log('newPosts: ', posts)
     return <>
       <div id='container'>
         <header className = 'header'>
@@ -31,11 +49,11 @@ const App = () => {
               <Home username={user.username}/>
             </Route>
           <Route exact path='/posts'>
-            <AddPost token={token}/>
-            <Posts token={token}/>
+            <AddPost token={token} setPosts={setPosts}/>
+            <Posts token={token} setPosts={setPosts} posts={posts}/>
           </Route>
           <Route exact path='/profile'>
-            <Profile />
+            <Profile token={token} user={user}><div>heyy</div></Profile>
           </Route>
           <Route exact path='/account/:method'>
             <AccountForm setToken={setToken} setUser={setUser}/>

@@ -1,7 +1,8 @@
 import React from 'react';
 
 
- const Profile = () => {
+ const Profile = ({token, user}) => {
+        
     return <p>Profile</p>
 }
 

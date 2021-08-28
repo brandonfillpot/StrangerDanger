@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from 'react';
 
-const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT'
+import { callApi } from './util'
+import { SinglePost } from './'
 
- const Posts = () => {
-    const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-        const fetchPosts = async () => {
-            const resp = await fetch(`${baseURL}/posts`);
-            const data = await resp.json();
-            setPosts(data.data.posts)    
-        }
-        fetchPosts()
-    }, [])
-    console.log('posts: ', posts)
+ const Posts = ({token, posts, setPosts}) => {
+     const handleDelete = async (postId) => {
+        const respObj = await callApi({
+          method: 'DELETE',
+          url: `/posts/${postId}`,
+          token
+        });
+        const postResp = await callApi({url: '/posts', token});
+        setPosts(postResp.data.posts);
+      }
+    
   return <>
     <h1 className='title'>
     Posts
     </h1> 
     <div className='content'>
     {
-        posts.map(post => <><h3 key={post._id}>
-         {post.title}
-        </h3>
-        <div>
-         {post.description}
-        </div></>)
+        posts.map(post => <>
+        <div key={post._id}>
+            <h3>
+                {post.title} ...... {post.price}
+            </h3>
+            <div>
+                {post.description}
+            </div>
+            {
+              post.isAuthor ?  <button onClick={() => handleDelete(post._id)}>Delete</button> : ''
+            }    
+        </div>    
+        </>)
     }
     </div>
     </>

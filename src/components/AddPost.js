@@ -1,8 +1,9 @@
 import React, { useState }from 'react';
 import { callApi } from './util';
 
+const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT'
 
- const AddPost = ({token}) => {
+ const AddPost = ({token, setPosts}) => {
      const [title, setTitle] = useState('')
      const [description, setDescription] = useState('')
      const [price, setPrice] = useState('')
@@ -20,9 +21,12 @@ import { callApi } from './util';
                     description,
                     price
                 }
-                }})
+                }
+            })
         console.log('addPostResp:', addPostResp)
-        console.log(token)
+        const postResp = await callApi({url: '/posts', token});
+        console.log('postResp: ', postResp)
+        setPosts(postResp.data.posts);
      }
 
     return <>
