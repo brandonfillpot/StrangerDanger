@@ -28,10 +28,24 @@ const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT/u
             Messages
         </h1> 
         <div>
+            <h3>Recieved Messages</h3>
+            {  
+                userData.map(message => user._id !== message.fromUser._id ? <> 
+                <div className='messageR'>
+                    <div>A message from {message.fromUser.username} about your item '{message.post.title}'</div>
+                    <div>Details: {message.content}</div>
+                </div>
+                </> : '') 
+            }
+        </div>
+        <div>
+            <h3>Sent Messages</h3>
             {   
-                userData.map(message => user._id !== message.fromUser._id ? <>
-                <div>A message from {message.fromUser.username} about your item '{message.post.title}'</div>
-                <div>Details: {message.content}</div>
+                userData.map(message => user._id === message.fromUser._id ? <> 
+                <div className='messageS'>
+                    <div>About: '{message.post.title}'</div>
+                    <div>Details: {message.content}</div>
+                </div>
                 </> : '') 
             }
         </div>

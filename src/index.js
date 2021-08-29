@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
+
 import {
     AccountForm,
     Posts,
@@ -42,7 +43,7 @@ const App = () => {
         <header className = 'header'>
           <h1>Stranger's Things</h1>
           <div id='navbar' className='navbar'>
-              <Link to='/'>Home</Link> | <Link to='/account/register'>Register</Link> | <Link to='/account/login'>Login</Link> | <Link to='/posts'>Posts</Link> | <Link to='/profile'>Profile</Link>
+              <Link to='/'>Home</Link> | <Link to='/account/register'>Register</Link> | <Link to='/account/login'>Login</Link> | <Link to='/posts'>Posts</Link> | {token ? <Link to='/profile'>Profile</Link> : ''}
           </div>
           </header>
           <div id='main-section'>

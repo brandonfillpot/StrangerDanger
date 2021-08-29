@@ -34,3 +34,19 @@
 .price {
     align-content: flex-end;
 }
+.messageR {
+    border: solid black;
+    margin:10px;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 5px 5px;
+    width: 40%;
+}
+.messageS {
+    border: solid black;
+    margin:10px;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 5px 5px;
+    width: 40%;
+}
