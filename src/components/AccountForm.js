@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router';
 
-import {callApi} from './util'
 
 
  const AccountForm = ({setToken, setUser}) => {
@@ -10,7 +9,6 @@ import {callApi} from './util'
      const params = useParams();
      const history = useHistory();
      const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT/users'
-    //  console.log(baseURL)
      
      console.log('params.method: ', params.method)
     
@@ -35,7 +33,6 @@ import {callApi} from './util'
             console.log('data:', data)
             const token = data.data.token
             setToken(token)
-            // console.log('data:', data)
             if(data){
                 const userResp = await fetch(`${baseURL}/me`, {
                 headers: {

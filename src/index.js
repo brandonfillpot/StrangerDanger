@@ -53,7 +53,7 @@ const App = () => {
             <Posts token={token} setPosts={setPosts} posts={posts}/>
           </Route>
           <Route exact path='/profile'>
-            <Profile token={token} user={user}><div>heyy</div></Profile>
+            <Profile token={token} user={user}/>
           </Route>
           <Route exact path='/account/:method'>
             <AccountForm setToken={setToken} setUser={setUser}/>

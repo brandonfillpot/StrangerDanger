@@ -21,15 +21,16 @@ import { SinglePost } from './'
     <div className='content'>
     {
         posts.map(post => <>
-        <div key={post._id}>
+        <div key={post._id} className='singlePost'>
             <h3>
-                {post.title} ...... {post.price}
+                {post.title}
             </h3>
             <div>
-                {post.description}
+                <div><b>Description: </b>{post.description}</div>
+                <h4 className='price'>Price: {post.price}</h4>
             </div>
             {
-              post.isAuthor ?  <button onClick={() => handleDelete(post._id)}>Delete</button> : ''
+              post.isAuthor ?  <button onClick={() => handleDelete(post._id)}>Delete</button> : <button>Comment</button>
             }    
         </div>    
         </>)
