@@ -4,3 +4,4 @@ export { default as AccountForm } from './AccountForm';
  export { default as Home } from './Home';
  export { default as AddPost} from './AddPost'
  export { default as SinglePost } from './SinglePost'
+ export { default as MessageForm } from './MessageForm'

@@ -7,7 +7,8 @@ import {
     Posts,
     Profile,
     Home,
-    AddPost
+    AddPost,
+    MessageForm
   } from './components';
 
   const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT/'
@@ -57,6 +58,9 @@ const App = () => {
           </Route>
           <Route exact path='/account/:method'>
             <AccountForm setToken={setToken} setUser={setUser}/>
+          </Route>
+          <Route exact path='/comment/:postId'>
+            <MessageForm token={token}/>
           </Route>
       </div>
       </div>

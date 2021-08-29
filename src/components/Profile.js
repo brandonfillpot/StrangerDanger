@@ -5,7 +5,7 @@ import { callApi } from './util';
 const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT/users'
 
 
- const Profile = ({token}) => {
+ const Profile = ({token, user}) => {
 
     const [userData, setUserData] = useState([])
     useEffect(() => {
@@ -19,20 +19,20 @@ const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT/u
             const userProfile = await userResp.json() 
             console.log('userData2:', userProfile)
             setUserData(userProfile.data.messages)
+            console.log('profile:', userData)
             }
             fetchUserData()
-            console.log('profile:', userData)
         }, [token])
     return <>
         <h1 className='title'>
             Messages
         </h1> 
         <div>
-            {
-                userData.map(message => <>
+            {   
+                userData.map(message => user._id !== message.fromUser._id ? <>
                 <div>A message from {message.fromUser.username} about your item '{message.post.title}'</div>
                 <div>Details: {message.content}</div>
-                </>)
+                </> : '') 
             }
         </div>
     </>
